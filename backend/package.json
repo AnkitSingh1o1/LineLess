@@ -3,9 +3,22 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "analyze": "dotenv -e .env -- sonar-scanner -Dsonar.login=$SONAR_TOKEN"
   },
   "author": "Ankit Singh",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^9.0.0",
+    "sonarqube-scanner": "^4.3.0",
+    "typescript": "^5.8.3"
+  }
 }
