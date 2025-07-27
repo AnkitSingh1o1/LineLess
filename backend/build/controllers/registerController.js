@@ -7,10 +7,8 @@ class RegisterController {
         this.registerService = new registerService_1.RegisterService();
     }
     async register(req, res) {
-        console.log(req.body);
         try {
             const { username, email, password } = req.body;
-            console.log('Registering user:', { username, email, password });
             if (!username || !email || !password) {
                 res.status(400).json({ error: 'Missing required fields' });
                 return;
