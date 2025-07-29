@@ -11,3 +11,8 @@ export interface User {
   password: string;
   createdAt: Date;
 }
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}

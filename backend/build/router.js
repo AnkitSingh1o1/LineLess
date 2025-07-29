@@ -6,6 +6,8 @@ const router = (0, express_1.Router)();
 const registerController = new registerController_1.RegisterController();
 //Register
 router.post('/auth/register', (req, res) => registerController.register(req, res));
+//Login
+router.post('/auth/login', (req, res) => registerController.login(req, res));
 //Health check
 router.get('/health', (req, res) => {
     res.status(200).json({ status: 'UP' });

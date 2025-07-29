@@ -36,6 +36,11 @@ export class UserRepository {
     ]);
   }
 
+  async findByEmail(email: string): Promise<User | null> {
+    const userData = await this.redis.get(`user:email:${email}`);
+    return userData ? JSON.parse(userData) : null;
+  }
+
   async disconnect(): Promise<void>{
     await this.redis.quit();
   }

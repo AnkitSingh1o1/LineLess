@@ -36,5 +36,21 @@ class RegisterService {
         const token = jsonwebtoken_1.default.sign({ userId: user.id, username: user.username }, this.JWT_SECRET, { expiresIn: '1h' });
         return { token };
     }
+    async login(data) {
+        const { email, password } = data;
+        // Find user by email
+        const user = await this.userRepository.findByEmail(email);
+        if (!user) {
+            throw new Error('Invalid email or password');
+        }
+        // Verify password
+        const isPasswordValid = await bcrypt_1.default.compare(password, user.password);
+        if (!isPasswordValid) {
+            throw new Error('Invalid email or password');
+        }
+        // Generate JWT
+        const token = jsonwebtoken_1.default.sign({ userId: user.id, username: user.username }, this.JWT_SECRET, { expiresIn: '1h' });
+        return { token };
+    }
 }
 exports.RegisterService = RegisterService;
